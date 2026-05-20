@@ -1,6 +1,7 @@
 import "../assets/styles/variables.scss";
 import "../assets/styles/fonts/fonts.scss";
 import "../assets/styles/global.scss";
+import styles from './app.module.scss';
 
 export default function RootLayout({
   children,
@@ -9,7 +10,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={styles.main}>
+        {children}
+      </body>
     </html>
   );
 }

@@ -1,6 +1,7 @@
 .inputWrapper {
     border: none;
     padding: 0;
+    background-color: transparent;
 }
 
 .inputContainer {
@@ -9,12 +10,15 @@
     border: none;
     width: 100%;
     padding: 0;
+    background-color: transparent;
 }
 
 .label {
     color: var(--main-color);
     font-family: var(--main-font-family);
     font-size: var(--support-font-size);
+    background-color: transparent;
+    padding-left: 4px;
 }
 
 .input {
@@ -25,6 +29,7 @@
     font-family: var(--main-font-family);
     color: var(--main-color);
     font-size: var(--main-font-size);
+    background: transparent;
 }
 
 input:focus {
@@ -46,6 +51,8 @@ input:focus {
 
 .iconContainer {
     position: absolute;
+    width: 20px;
+    height: 20px;
     right: 12px;
     top: 12px;
     border: none;

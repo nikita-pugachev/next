@@ -1,0 +1,13 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 36px;
+    background-color: var(--background-alt);
+}
+
+.buttonContainer {
+    display: flex;
+    gap: 8px;
+    background-color: transparent;
+}

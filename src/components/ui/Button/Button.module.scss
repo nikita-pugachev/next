@@ -1,4 +1,7 @@
 .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: var(--main-color);
     font-family: var(--title-font-family);
     font-size: var(--main-font-size);
@@ -7,11 +10,27 @@
     border: none;
 }
 
+.button:hover {
+    cursor: pointer;
+}
+
+.button:focus {
+    outline: none;
+}
+
 .main {
     background-color: var(--background-button-main);
 }
 
-.secondary {
-    background-color: var(--background-button-secondary);
+.main:focus {
     border: 1px solid var(--border-main);
+}
+
+.secondary {
+    background-color: transparent;
+    border: 1px solid var(--border-main);
+}
+
+.secondary:focus {
+    border: 1px solid var(--border-access);
 }

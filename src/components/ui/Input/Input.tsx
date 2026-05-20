@@ -1,5 +1,6 @@
+'use client'
 import styles from "./Input.module.scss";
-import { FC } from "react";
+import { FC, useState } from "react";
 
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
