@@ -7,15 +7,44 @@ import Link from "next/link";
 import Image from "next/image";
 import Show from "@/assets/icons/eye.svg";
 import Hide from "@/assets/icons/eye-slash.svg";
+import { useRouter } from "next/navigation";
+import { createClient } from "@/utils/supabase/client";
 
 export default function Page() {
+  const supabase = createClient();
+  const router = useRouter();
+
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [show, setShow] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
+    setError("");
+
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: {
+          name,
+        },
+      },
+    });
+
+    if (error) {
+      setError(error.message);
+      setLoading(false);
+      return;
+    }
+
+    router.push("/");
+    setLoading(false);
   };
 
   return (
@@ -30,6 +59,7 @@ export default function Page() {
           type="name"
           id="name"
           value={name}
+          required
         />
         <Input
           className={styles.inputForm}
@@ -39,6 +69,7 @@ export default function Page() {
           type="email"
           id="email"
           value={email}
+          required
         />
         <Input
           className={styles.inputForm}
@@ -51,6 +82,7 @@ export default function Page() {
           hint="Не менее 8-ми символов"
           icon={<Image src={show ? Show : Hide} alt="глаз" />}
           value={password}
+          required
         />
         <Button
           className={styles.buttonSubmit}

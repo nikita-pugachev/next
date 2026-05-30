@@ -4,7 +4,7 @@ import { FC } from "react";
 
 interface ButtonProps {
   variant?: 'main' | 'secondary';
-  onClick: () => void;
+  onClick?: () => void;
   children: React.ReactNode;
   disabled?: boolean;
   type?: 'button' | 'submit' | 'reset';
