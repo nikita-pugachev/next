@@ -1,0 +1,39 @@
+.loginPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background: var(--auth-gradient);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    min-width: 300px;
+}
+
+.title {
+    color: var(--main-color);
+    font-family: var(--title-font-family);
+    font-size: var(--h2-font-size);
+}
+
+.inputForm {
+    background-color: #fff;
+    width: 100%;
+}
+
+.buttonSubmit {
+    width: 100%;
+}
+
+.link {
+    text-decoration: none;
+    color: var(--main-color);
+    font-family: var(--alt-font-family);
+    font-size: var(--support-font-size);
+}

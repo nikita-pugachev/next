@@ -7,12 +7,13 @@ interface ButtonProps {
   onClick: () => void;
   children: React.ReactNode;
   disabled?: boolean;
-  type?: 'button' | 'submit' | 'reset'
+  type?: 'button' | 'submit' | 'reset';
+  className?: string;
 }
 
-export const Button: FC<ButtonProps> = ({variant='main', onClick, children, disabled=false, type='button'}) => {
+export const Button: FC<ButtonProps> = ({variant='main', onClick, children, disabled=false, type='button', className}) => {
   return (
-    <button onClick={onClick} type={type} disabled={disabled} className={`${styles.button} ${styles[variant]}`}>
+    <button onClick={onClick} type={type} disabled={disabled} className={`${styles.button} ${styles[variant]} ${className}`}>
       {children}
     </button>
   );

@@ -20,6 +20,7 @@
 
 .main {
     background-color: var(--background-button-main);
+    border: 1px solid var(--background-button-main);
 }
 
 .main:focus {

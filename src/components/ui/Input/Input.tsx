@@ -25,7 +25,7 @@ export const Input: FC<InputProps> = ({
   ...props
 }) => {
   return (
-    <div className={styles.inputWrapper}>
+    <div className={`${styles.inputWrapper}`}>
       {label && (
         <label className={styles.label} htmlFor={id}>
           {label}

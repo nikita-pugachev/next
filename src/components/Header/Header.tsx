@@ -14,7 +14,9 @@ export const Header = () => {
   };
   return (
     <header className={styles.header}>
-      <Search />
+      <div className={styles.searchContainer}>
+        <Search />
+      </div>
       <div className={styles.buttonContainer}>
         <Button onClick={handleLogin}>Войти</Button>
         <Button variant="secondary" onClick={handleRegister}>

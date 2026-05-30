@@ -2,6 +2,7 @@
     border: none;
     padding: 0;
     background-color: transparent;
+    width: 100%;
 }
 
 .inputContainer {
@@ -29,7 +30,6 @@
     font-family: var(--main-font-family);
     color: var(--main-color);
     font-size: var(--main-font-size);
-    background: transparent;
 }
 
 input:focus {
