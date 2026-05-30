@@ -9,6 +9,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   error?: string;
   hint?: string;
+  categoryIcon?: React.ReactNode;
   icon?: React.ReactNode;
   onClick?: () => void;
 }
@@ -19,6 +20,7 @@ export const Input: FC<InputProps> = ({
   label,
   error,
   hint,
+  categoryIcon,
   icon,
   className,
   onClick,
@@ -33,11 +35,12 @@ export const Input: FC<InputProps> = ({
       )}
       <div className={styles.inputContainer}>
         <input
-          className={`${styles.input} ${className}`}
+          className={`${styles.input} ${className ? ` ${className}` : ""}`}
           id={id}
           type={type}
           {...props}
         />
+        {categoryIcon && <span className={styles.categoryIcon}>{categoryIcon}</span>}
         {icon && <button onClick={onClick} className={styles.iconContainer}>{icon}</button>}
       </div>
       {error && <span className={styles.error}>{error}</span>}
