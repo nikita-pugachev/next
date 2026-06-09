@@ -19,13 +19,13 @@ export default function Page() {
   const [password, setPassword] = useState("");
   const [show, setShow] = useState(false);
 
-  const [error, setError] = useState("");
+  const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    setError("");
+    setError(null);
 
     const { data, error } = await supabase.auth.signUp({
       email,
@@ -36,6 +36,11 @@ export default function Page() {
         },
       },
     });
+
+    if (password.length < 6) {
+      setError("Пароль должен содержать не менее 6-ти символов");
+      return;
+    }
 
     if (error) {
       setError(error.message);
@@ -76,11 +81,21 @@ export default function Page() {
           label="Пароль"
           aria-label="password"
           type={show ? "text" : "password"}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => {
+            setPassword(e.target.value);
+            if (error) setError(null);
+          }}
           onClick={() => setShow(!show)}
           id="password"
-          hint="Не менее 8-ми символов"
-          icon={<Image src={show ? Show : Hide} alt="глаз" />}
+          hint={
+            !password && !error
+              ? "Пароль должен содержать не менее 6-ти символов"
+              : undefined
+          }
+          icon={
+              <Image src={show ? Show : Hide} alt="глаз" onClick={() => setShow(!show)}/>
+          }
+          error={error}
           value={password}
           required
         />

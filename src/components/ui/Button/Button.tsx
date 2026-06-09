@@ -1,20 +1,29 @@
 'use client'
 import styles from "./Button.module.scss";
-import { FC } from "react";
+import { forwardRef, ButtonHTMLAttributes } from "react";
 
-interface ButtonProps {
+interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type' | 'onClick' | 'children'> {
   variant?: 'main' | 'secondary';
   onClick?: () => void;
   children: React.ReactNode;
-  disabled?: boolean;
   type?: 'button' | 'submit' | 'reset';
-  className?: string;
 }
 
-export const Button: FC<ButtonProps> = ({variant='main', onClick, children, disabled=false, type='button', className}) => {
-  return (
-    <button onClick={onClick} type={type} disabled={disabled} className={`${styles.button} ${styles[variant]} ${className}`}>
-      {children}
-    </button>
-  );
-};
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ variant = 'main', onClick, children, disabled = false, type = 'button', className, ...rest }, ref) => {
+    return (
+      <button
+        ref={ref}
+        onClick={onClick}
+        type={type}
+        disabled={disabled}
+        className={`${styles.button} ${styles[variant]} ${className ?? ''}`}
+        {...rest}
+      >
+        {children}
+      </button>
+    );
+  }
+);
+
+Button.displayName = 'Button';
