@@ -24,8 +24,14 @@ export default function Page() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading(true);
     setError(null);
+
+    if (password.length < 6) {
+      setError("Пароль должен содержать не менее 6-ти символов");
+      return;
+    }
+
+    setLoading(true);
 
     const { data, error } = await supabase.auth.signUp({
       email,
@@ -36,11 +42,6 @@ export default function Page() {
         },
       },
     });
-
-    if (password.length < 6) {
-      setError("Пароль должен содержать не менее 6-ти символов");
-      return;
-    }
 
     if (error) {
       setError(error.message);
@@ -85,7 +86,6 @@ export default function Page() {
             setPassword(e.target.value);
             if (error) setError(null);
           }}
-          onClick={() => setShow(!show)}
           id="password"
           hint={
             !password && !error
@@ -93,7 +93,7 @@ export default function Page() {
               : undefined
           }
           icon={
-              <Image src={show ? Show : Hide} alt="глаз" onClick={() => setShow(!show)}/>
+              <Image src={show ? Hide : Show} alt="глаз" onClick={() => setShow(!show)}/>
           }
           error={error}
           value={password}
@@ -102,7 +102,6 @@ export default function Page() {
         <Button
           className={styles.buttonSubmit}
           type="submit"
-          onClick={() => {}}
         >
           Зарегистрироваться
         </Button>
