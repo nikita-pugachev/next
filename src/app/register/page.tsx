@@ -7,15 +7,50 @@ import Link from "next/link";
 import Image from "next/image";
 import Show from "@/assets/icons/eye.svg";
 import Hide from "@/assets/icons/eye-slash.svg";
+import { useRouter } from "next/navigation";
+import { createClient } from "@/utils/supabase/client";
 
 export default function Page() {
+  const supabase = createClient();
+  const router = useRouter();
+
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [show, setShow] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setError(null);
+
+    if (password.length < 6) {
+      setError("Пароль должен содержать не менее 6-ти символов");
+      return;
+    }
+
+    setLoading(true);
+
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: {
+          name,
+        },
+      },
+    });
+
+    if (error) {
+      setError(error.message);
+      setLoading(false);
+      return;
+    }
+
+    router.push("/");
+    setLoading(false);
   };
 
   return (
@@ -30,6 +65,7 @@ export default function Page() {
           type="name"
           id="name"
           value={name}
+          required
         />
         <Input
           className={styles.inputForm}
@@ -39,23 +75,33 @@ export default function Page() {
           type="email"
           id="email"
           value={email}
+          required
         />
         <Input
           className={styles.inputForm}
           label="Пароль"
           aria-label="password"
           type={show ? "text" : "password"}
-          onChange={(e) => setPassword(e.target.value)}
-          onClick={() => setShow(!show)}
+          onChange={(e) => {
+            setPassword(e.target.value);
+            if (error) setError(null);
+          }}
           id="password"
-          hint="Не менее 8-ми символов"
-          icon={<Image src={show ? Show : Hide} alt="глаз" />}
+          hint={
+            !password && !error
+              ? "Пароль должен содержать не менее 6-ти символов"
+              : undefined
+          }
+          icon={
+              <Image src={show ? Hide : Show} alt="глаз" onClick={() => setShow(!show)}/>
+          }
+          error={error}
           value={password}
+          required
         />
         <Button
           className={styles.buttonSubmit}
           type="submit"
-          onClick={() => {}}
         >
           Зарегистрироваться
         </Button>

@@ -37,3 +37,14 @@
     font-family: var(--alt-font-family);
     font-size: var(--support-font-size);
 }
+
+.showButton {
+    border: none;
+    background: transparent;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}

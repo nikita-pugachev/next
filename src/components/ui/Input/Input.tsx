@@ -7,7 +7,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   id?: string;
   type?: "text" | "email" | "password" | "name";
   label?: string;
-  error?: string;
+  error?: string | null;
   hint?: string;
   categoryIcon?: React.ReactNode;
   icon?: React.ReactNode;
@@ -41,7 +41,7 @@ export const Input: FC<InputProps> = ({
           {...props}
         />
         {categoryIcon && <span className={styles.categoryIcon}>{categoryIcon}</span>}
-        {icon && <button onClick={onClick} className={styles.iconContainer}>{icon}</button>}
+        {icon && <button type="button" onClick={onClick} className={styles.iconContainer}>{icon}</button>}
       </div>
       {error && <span className={styles.error}>{error}</span>}
       {hint && <span className={styles.hint}>{hint}</span>}

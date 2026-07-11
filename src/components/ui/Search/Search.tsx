@@ -13,12 +13,24 @@ interface SearchProps {
 
 export const Search: FC<SearchProps> = ({ value = "", onChange }) => {
   const [state, setState] = useState<string>(value);
+
+  const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    setState(val);
+    onChange?.(val);
+  };
+
+  const handleClear = () => {
+    setState("");
+    onChange?.("");
+  };
+
   return (
     <Input
       value={state}
       aria-label="Поиск"
-      onChange={(e) => setState(e.target.value)}
-      onClick={() => setState("")}
+      onChange={handleTextChange}
+      onClick={handleClear}
       className={styles.searchInput}
       icon={
         state && <Image className={styles.icon} src={closeIcon} alt='close' />

@@ -15,3 +15,31 @@
     gap: 8px;
     background-color: transparent;
 }
+
+.profileContainer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.profileLink {
+    color: var(--main-color);
+    font-family: var(--main-font-family);
+    font-size: var(--main-font-size);
+    text-decoration: none;
+}
+
+.profileLink:hover {
+    text-decoration: underline;
+}
+
+.logout {
+    border: none;
+    background: transparent;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
