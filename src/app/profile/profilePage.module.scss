@@ -1,0 +1,87 @@
+.formContainer {
+  width: 100%;
+  max-width: 480px;
+}
+
+.title {
+  font-family: var(--title-font-family);
+  font-size: var(--h2-font-size);
+  color: var(--main-color);
+  margin-bottom: 24px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.avatarUploadGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  color: var(--main-color);
+  font-family: var(--main-font-family);
+  font-size: var(--support-font-size);
+  padding-left: 4px;
+}
+
+.changePasswordToggle {
+  background: transparent;
+  border: none;
+  color: var(--border-access);
+  font-family: var(--title-font-family);
+  font-size: var(--main-font-size);
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  margin-top: 8px;
+  text-decoration: underline;
+  width: fit-content;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.passwordFields {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.cancelPasswordToggle {
+  background: transparent;
+  border: none;
+  color: var(--error-color);
+  font-family: var(--main-font-family);
+  font-size: var(--support-font-size);
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  text-decoration: underline;
+  width: fit-content;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.messageAlert {
+  font-family: var(--main-font-family);
+  font-size: var(--support-font-size);
+}
+
+.successAlert {
+  color: #137333;
+}
+
+.errorAlert {
+  color: #c5221f;
+}

@@ -1,10 +1,5 @@
 .formContainer {
-  background-color: var(--background-alt);
-  padding: 32px;
-  border-radius: 16px;
-  max-width: 520px;
   width: 100%;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
 }
 
 .form {
@@ -108,4 +103,22 @@
 
 .addConfirmButton {
   padding: 12px 16px;
+}
+
+.messageAlert {
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-family: var(--main-font-family);
+  font-size: var(--support-font-size);
+}
+
+.successAlert {
+  background-color: #e6f4ea;
+  color: #137333;
+}
+
+.errorAlert {
+  background-color: #fce8e6;
+  color: #c5221f;
 }

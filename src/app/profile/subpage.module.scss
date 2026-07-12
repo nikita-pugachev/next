@@ -1,0 +1,12 @@
+.title {
+  font-family: var(--title-font-family);
+  font-size: var(--h2-font-size);
+  color: var(--main-color);
+  margin-bottom: 24px;
+}
+
+.description {
+  font-family: var(--main-font-family);
+  color: var(--main-color);
+  opacity: 0.7;
+}
