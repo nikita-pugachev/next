@@ -118,7 +118,7 @@ export const CreatePost = ({ onClose }: CreatePostProps) => {
                 .from('recipes')
                 .insert({
                     title: trimmedTitle,
-                    description: trimmedDescription,
+                    description: trimmedDescription, // Изменено обратно на description после чистки БД
                     ingredients,
                     image_url: imageUrl,
                     author_id: user.id
