@@ -37,6 +37,16 @@
     background-color: var(--border-main);
     border-radius: 10px;
   }
+
+  @media (max-width: 576px) {
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 100vh !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    padding: 64px 20px 24px 20px !important; // Место для закрытия модалки и отступы
+    overflow-y: auto !important;
+  }
 }
 
 .sm {

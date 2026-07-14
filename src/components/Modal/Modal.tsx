@@ -18,7 +18,8 @@ export const Modal: FC<ModalProps> = ({ children, onClose, isOpen, size = 'md' }
     useEffect(() => {
         setMounted(true);
 
-        if (isOpen) {
+        const isMobile = typeof window !== 'undefined' && window.innerWidth <= 576;
+        if (isOpen && !isMobile) {
             document.body.style.overflow = 'hidden';
         }
 
