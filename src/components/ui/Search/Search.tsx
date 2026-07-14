@@ -1,7 +1,7 @@
 "use client";
 import styles from "./Search.module.scss";
 import { Input } from "@/components/ui/Input/Input";
-import { FC, useState } from "react";
+import { FC, useState, useEffect } from "react";
 import Image from "next/image";
 import closeIcon from "@/assets/icons/close.svg";
 import searchIcon from "@/assets/icons/search-icon.svg";
@@ -13,6 +13,10 @@ interface SearchProps {
 
 export const Search: FC<SearchProps> = ({ value = "", onChange }) => {
   const [state, setState] = useState<string>(value);
+
+  useEffect(() => {
+    setState(value);
+  }, [value]);
 
   const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value;

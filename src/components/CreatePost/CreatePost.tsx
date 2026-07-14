@@ -12,9 +12,10 @@ import { useAuth } from '@/hooks/useAuth';
 
 interface CreatePostProps {
   onClose?: () => void;
+  onSuccess?: () => void;
 }
 
-export const CreatePost = ({ onClose }: CreatePostProps) => {
+export const CreatePost = ({ onClose, onSuccess }: CreatePostProps) => {
     const { user } = useAuth();
     const supabase = createClient();
 
@@ -64,7 +65,7 @@ export const CreatePost = ({ onClose }: CreatePostProps) => {
         setDescription('');
         setIngredients([]);
         setImageFile(null);
-        setFileInputKey(prev => prev + 1); // Сбрасываем FileInput
+        setFileInputKey(prev => prev + 1);
         setMessage(null);
     };
 
@@ -94,7 +95,6 @@ export const CreatePost = ({ onClose }: CreatePostProps) => {
         try {
             let imageUrl = null;
 
-            // 1. Загрузка фотографии блюда в Storage
             if (imageFile) {
                 const fileExt = imageFile.name.split('.').pop();
                 const fileName = `recipe_${Date.now()}.${fileExt}`;
@@ -113,12 +113,11 @@ export const CreatePost = ({ onClose }: CreatePostProps) => {
                 imageUrl = publicUrl;
             }
 
-            // 2. Запись в таблицу recipes в Supabase
             const { error: insertError } = await supabase
                 .from('recipes')
                 .insert({
                     title: trimmedTitle,
-                    description: trimmedDescription, // Изменено обратно на description после чистки БД
+                    description: trimmedDescription,
                     ingredients,
                     image_url: imageUrl,
                     author_id: user.id
@@ -126,13 +125,9 @@ export const CreatePost = ({ onClose }: CreatePostProps) => {
 
             if (insertError) throw insertError;
 
-            // 3. Успешный сброс и закрытие модалки
-            setMessage({ type: 'success', text: 'Рецепт успешно опубликован!' });
             handleReset();
-
-            if (onClose) {
-                setTimeout(onClose, 1000); // Закрываем модальное окно через 1 секунду, чтобы пользователь увидел сообщение
-            }
+            if (onSuccess) onSuccess();
+            if (onClose) onClose();
         } catch (err: any) {
             setMessage({ type: 'error', text: err.message || 'Ошибка при публикации рецепта' });
         } finally {

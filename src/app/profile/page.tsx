@@ -100,6 +100,17 @@ export default function ProfilePage() {
 
       if (updateError) throw updateError;
 
+      const { error: profileError } = await supabase
+        .from('profiles')
+        .update({
+          name: trimmedName,
+          avatar_url: uploadedAvatarUrl,
+          updated_at: new Date().toISOString()
+        })
+        .eq('id', user.id);
+
+      if (profileError) throw profileError;
+
       await refreshUser();
 
       if (updatedUser?.new_email && updatedUser.new_email !== user.email) {

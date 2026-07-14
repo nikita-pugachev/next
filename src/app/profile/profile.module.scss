@@ -6,6 +6,13 @@
   width: 100%;
   flex: 1;
   align-items: stretch;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+    gap: 24px;
+    padding-block: 24px;
+    padding-inline: 16px;
+  }
 }
 
 .sidebar {
@@ -19,6 +26,12 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
   height: auto;
   align-items: center;
+
+  @media (max-width: 900px) {
+    width: 100%;
+    padding: 24px;
+    gap: 24px;
+  }
 }
 
 .avatarSection {
@@ -58,6 +71,11 @@
   border-radius: 24px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
   min-height: 480px;
+
+  @media (max-width: 900px) {
+    padding: 24px 16px;
+    min-height: auto;
+  }
 }
 
 .backButton {
@@ -78,4 +96,14 @@
   &:hover {
     opacity: 1;
   }
+}
+
+.loader {
+  padding: 40px;
+  text-align: center;
+  font-family: var(--main-font-family);
+  font-size: 16px;
+  color: var(--main-color);
+  opacity: 0.7;
+  width: 100%;
 }

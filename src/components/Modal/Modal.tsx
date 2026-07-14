@@ -9,9 +9,10 @@ interface ModalProps {
     children: React.ReactNode;
     onClose: () => void;
     isOpen: boolean;
+    size?: 'sm' | 'md' | 'lg';
 }
 
-export const Modal: FC<ModalProps> = ({ children, onClose, isOpen }) => {
+export const Modal: FC<ModalProps> = ({ children, onClose, isOpen, size = 'md' }) => {
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
@@ -26,13 +27,30 @@ export const Modal: FC<ModalProps> = ({ children, onClose, isOpen }) => {
         };
     }, [isOpen]);
 
+    useEffect(() => {
+        if (!isOpen) return;
+
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === 'Escape') {
+                onClose();
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [isOpen, onClose]);
+
     if (!isOpen || !mounted) {
         return null;
     }
 
+    const modalClassName = `${styles.modal} ${styles[size]}`;
+
     return createPortal(
         <div className={styles.overlay} onClick={onClose}>
-            <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+            <div className={modalClassName} onClick={(e) => e.stopPropagation()}>
                 <button 
                     type="button" 
                     className={styles.closeButton} 

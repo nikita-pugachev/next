@@ -20,7 +20,7 @@ export default function ProfileLayout({ children }: { children: React.ReactNode 
     }, [user, loading, router]);
 
     if (loading) {
-        return <div style={{ padding: '40px', textAlign: 'center' }}>Загрузка...</div>;
+        return <div className={styles.loader}>Загрузка...</div>;
     }
 
     if (!user) {

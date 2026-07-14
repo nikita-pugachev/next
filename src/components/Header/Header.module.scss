@@ -54,7 +54,7 @@
 }
 
 .dropdownMenu {
-    display: none;
+    display: flex;
     position: absolute;
     top: 100%;
     right: 0;
@@ -80,11 +80,6 @@
     }
 }
 
-
-.profileWrapper:hover .dropdownMenu {
-    display: flex;
-}
-
 .dropdownItem {
     display: flex;
     align-items: center;
@@ -100,8 +95,12 @@
     font-size: 14px;
     cursor: pointer;
     text-align: left;
+    text-decoration: none;
+    box-sizing: border-box;
 
     &:hover {
+        text-decoration: none;
+
         .plusIcon {
             filter: invert(66%) sepia(61%) saturate(541%) hue-rotate(65deg) brightness(90%) contrast(87%);
         }
@@ -117,7 +116,6 @@
     justify-content: space-between;
 
     &:hover {
-        background-color: transparent;
         color: var(--main-color);
 
         .logoutIcon {
@@ -154,4 +152,30 @@
     font-size: 20px;
     font-weight: bold;
     color: var(--main-color);
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 16px 20px;
+        gap: 16px;
+        flex-wrap: wrap;
+    }
+
+    .searchContainer {
+        width: 100%;
+        order: 3;
+    }
+
+    .username {
+        display: none;
+    }
+
+    .userBadge {
+        padding: 4px;
+    }
+
+    .dropdownMenu {
+        right: 0;
+        top: calc(100% + 4px);
+    }
 }
