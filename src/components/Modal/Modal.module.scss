@@ -46,6 +46,14 @@
     margin: 0 !important;
     padding: 64px 20px 24px 20px !important; // Место для закрытия модалки и отступы
     overflow-y: auto !important;
+
+    // Полностью скрываем визуальный скроллбар на смартфонах для чистоты интерфейса
+    &::-webkit-scrollbar {
+      display: none !important;
+      width: 0 !important;
+      height: 0 !important;
+      background: transparent !important;
+    }
   }
 }
 
