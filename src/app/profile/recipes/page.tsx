@@ -4,7 +4,7 @@ import { createClient } from '@/utils/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 import { CardPost } from '@/components/CardPost/CardPost';
 import { Modal } from '@/components/Modal/Modal';
-import { PostInfo } from '@/components/postInfo/PostInfo';
+import { PostInfo } from '@/components/PostInfo/PostInfo';
 import { Button } from '@/components/ui/Button/Button';
 import styles from '../subpage.module.scss';
 
@@ -39,7 +39,7 @@ export default function RecipesPage() {
                 .eq('user_id', user.id);
 
             if (likesError) throw likesError;
-            const likedIds = new Set(likes?.map(like => like.recipe_id) || []);
+            const likedIds = new Set<string>(likes?.map((like: any) => like.recipe_id as string) || []);
             setLikedRecipeIds(likedIds);
         } catch (err) {
             console.error('Ошибка при загрузке ваших рецептов:', err);

@@ -4,7 +4,7 @@ import { createClient } from '@/utils/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 import { CardPost } from '@/components/CardPost/CardPost';
 import { Modal } from '@/components/Modal/Modal';
-import { PostInfo } from '@/components/postInfo/PostInfo';
+import { PostInfo } from '@/components/PostInfo/PostInfo';
 import styles from '../subpage.module.scss';
 
 export default function FavoritePage() {
@@ -26,7 +26,7 @@ export default function FavoritePage() {
 
             if (likesError) throw likesError;
 
-            const likedIds = likes?.map(like => like.recipe_id) || [];
+            const likedIds = likes?.map((like: any) => like.recipe_id) || [];
 
             if (likedIds.length === 0) {
                 setRecipes([]);

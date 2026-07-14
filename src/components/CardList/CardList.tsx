@@ -37,12 +37,13 @@ export const CardList = ({ searchQuery = "", refreshTrigger = 0 }: CardListProps
             const params = new URLSearchParams(window.location.search);
             const urlRecipeId = params.get('recipeId');
             if (urlRecipeId) {
-                const matched = fetchedRecipes.find(recipe => recipe.id === urlRecipeId);
+                const matched = fetchedRecipes.find((recipe: any) => recipe.id === urlRecipeId);
                 if (matched) {
                     setSelectedRecipe(matched);
                 }
             }
 
+            // Если пользователь авторизован, загружаем его лайки
             if (user) {
                 const { data: likes, error: likesError } = await supabase
                     .from('likes')
@@ -50,7 +51,7 @@ export const CardList = ({ searchQuery = "", refreshTrigger = 0 }: CardListProps
                     .eq('user_id', user.id);
 
                 if (likesError) throw likesError;
-                const likedIds = new Set(likes?.map(like => like.recipe_id) || []);
+                const likedIds = new Set<string>(likes?.map((like: any) => like.recipe_id as string) || []);
                 setLikedRecipeIds(likedIds);
             }
         } catch (err) {
