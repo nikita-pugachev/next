@@ -178,4 +178,18 @@
         right: 0;
         top: calc(100% + 4px);
     }
+
+    .buttonContainer {
+        width: 100%;
+        order: 2; // Размещаем кнопки на второй строке (под логотипом)
+        gap: 8px;
+        
+        & > button {
+            flex: 1; // Растягиваем кнопки поровну 50%/50%
+            justify-content: center;
+            font-size: 13px; // Чуть меньший шрифт для мобильных, чтобы длинные слова влезали
+            white-space: nowrap;
+            padding: 10px 12px; // Компактные паддинги
+        }
+    }
 }
