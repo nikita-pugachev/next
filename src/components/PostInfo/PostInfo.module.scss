@@ -4,21 +4,7 @@
   gap: 24px;
   width: 100%;
   max-width: 600px;
-  max-height: 80vh;
-  overflow-y: auto;
-  padding-right: 8px;
   box-sizing: border-box;
-
-  &::-webkit-scrollbar {
-    width: 6px;
-  }
-  &::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: var(--border-main);
-    border-radius: 10px;
-  }
 }
 
 .header {

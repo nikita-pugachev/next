@@ -23,6 +23,18 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+
+  // Тонкий стильный скроллбар
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--border-main);
+    border-radius: 10px;
+  }
 }
 
 .sm {

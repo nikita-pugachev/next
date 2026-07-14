@@ -6,6 +6,7 @@ import { Button } from "../ui/Button/Button";
 import favoriteIcon from "@/assets/icons/favorite.svg";
 import likeActiveIcon from "@/assets/icons/like-active.svg";
 import logoIcon from "@/assets/icons/logo_icon.jpg";
+import TrashIcon from '@/assets/icons/trash.svg';
 
 interface Recipe {
   id: string;
@@ -52,7 +53,7 @@ export const CardPost: FC<CardPostProps> = ({
             }}
             aria-label="Удалить рецепт"
           >
-            Удалить
+            <Image src={TrashIcon} alt="delete" className={styles.trashIcon}/>
           </button>
         )}
       </div>
