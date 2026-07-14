@@ -1,0 +1,19 @@
+.main {
+    background-color: var(--background-main);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.feedContainer {
+    width: 100%;
+    max-width: 100%;
+    padding-inline: 36px;
+    padding-block: 40px;
+    box-sizing: border-box;
+
+    @media (max-width: 768px) {
+        padding-inline: 20px;
+        padding-block: 24px;
+    }
+}

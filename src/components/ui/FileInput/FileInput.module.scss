@@ -1,0 +1,85 @@
+.fileInputWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+}
+
+.hiddenInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.hiddenInput:focus-visible + .customButton {
+  border: 1px solid var(--border-main);
+}
+
+.customButton {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--main-color);
+  font-family: var(--title-font-family);
+  font-size: var(--main-font-size);
+  border-radius: 12px;
+  padding: 16px 24px;
+  background-color: var(--background-button-main);
+  border: 1px solid var(--background-button-main);
+  cursor: pointer;
+  user-select: none;
+  width: 280px; // Фиксированная ширина кнопки
+  box-sizing: border-box;
+}
+
+// Стили деталей выбранного файла
+.fileDetails {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between; // Разносит имя файла влево, а крестик вправо
+  gap: 12px;
+  padding: 16px 24px; // Падинги равны кнопке для сохранения постоянной высоты
+  background-color: var(--background-button-secondary);
+  border: 1px solid var(--border-main);
+  border-radius: 12px;
+  width: 280px; // Фиксированная ширина совпадает с кнопкой
+  box-sizing: border-box;
+}
+
+.fileName {
+  font-family: var(--main-font-family);
+  font-size: var(--main-font-size);
+  color: var(--main-color);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px; // Лимитируем ширину имени файла для предотвращения растягивания
+  flex: 1; // Заполняет оставшееся пространство
+}
+
+.clearButton {
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  img {
+    display: block;
+  }
+}
