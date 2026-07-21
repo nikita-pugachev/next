@@ -93,7 +93,11 @@ export default function Page() {
               : undefined
           }
           icon={
-              <Image src={show ? Hide : Show} alt="глаз" onClick={() => setShow(!show)}/>
+            <Image
+              src={show ? Hide : Show}
+              alt="глаз"
+              onClick={() => setShow(!show)}
+            />
           }
           error={error}
           value={password}
@@ -102,8 +106,9 @@ export default function Page() {
         <Button
           className={styles.buttonSubmit}
           type="submit"
+          disabled={loading}
         >
-          Зарегистрироваться
+          {loading ? "Регистрация..." : "Зарегистрироваться"}
         </Button>
         <Link href="/login" className={styles.link}>
           <span>Уже есть аккаунт? Войти</span>

@@ -7,7 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Show from "@/assets/icons/eye.svg";
 import Hide from "@/assets/icons/eye-slash.svg";
-import { createClient } from "@/utils/supabase/client"; // Укажите правильный путь
+import { createClient } from "@/utils/supabase/client";
 import { useRouter } from "next/navigation";
 
 export default function Page() {
@@ -28,17 +28,17 @@ export default function Page() {
     setLoading(true);
 
     const { data, error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
+      email,
+      password,
     });
 
     if (error) {
-        setError("Неверный email или пароль");
-        setLoading(false);
-        return;
+      setError("Неверный email или пароль");
+      setLoading(false);
+      return;
     }
 
-    router.push("/")
+    router.push("/");
     setLoading(false);
   };
 
@@ -71,10 +71,13 @@ export default function Page() {
         <Button
           className={styles.buttonSubmit}
           type="submit"
+          disabled={loading}
         >
-          Войти
+          {loading ? "Вход..." : "Войти"}
         </Button>
-        {error ? <p className={styles.error}>Неверный email или пароль</p> : null}
+        {error ? (
+          <p className={styles.error}>Неверный email или пароль</p>
+        ) : null}
         <Link href="/register" className={styles.link}>
           <span>Нет аккаунта? Зарегистрироваться</span>
         </Link>
