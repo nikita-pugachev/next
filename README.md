@@ -30,7 +30,7 @@ git clone git@github.com:nikita-pugachev/RecipeShare.git
 * Установить зависимости 'npm install'
 * Запустить проект с помощью комадны для терминала 'npm run dev'
 
-## 📝 ССылка на запуск
+## 📝 Сcылка на запуск
 [Веб-приложение "RecipeShare"](https://recipeshare-lemon.vercel.app/)
 
 ## P.S:
