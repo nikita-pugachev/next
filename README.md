@@ -11,7 +11,7 @@
 </div>
 
 ## 💻 Используемые технологии
-* Next.js [![Next.js](https://img.shields.io/badge/Next.js-black?logo=next.js&logoColor=white)]
+* Next.js
 * Supabase 
 * React
 * TypeScript
@@ -35,4 +35,4 @@ git clone git@github.com:nikita-pugachev/RecipeShare.git
 
 ## ✉️ Контакты автора
 [![Telegram](https://img.shields.io/badge/-Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/RUSSS1NG)
-[![Yandex](https://img.shields.io/badge/Gmail-D14836?logo=gmail&logoColor=white)](RUSSSSing@yandex.ru)
+[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)]
